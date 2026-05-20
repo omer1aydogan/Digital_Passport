@@ -20,27 +20,25 @@ const vehicles = {
     model: "Tanker",
     sasi: "Silo",
     malzeme: "Alüminyum",
-    agirlik: "8200 kg",
-    test: "Kalite kontrol: Geçti",
-    operator: "Operatör: #124",
-    tasarimci: "Omer Faruk AYDOGAN"
-
+    agirlik: "8200 kg",   
+    test: "Geçti",
+    operator: "#124"  
   },
   "TR002": {
     model: "Lowbed",
     sasi: "Çelik",
     malzeme: "Çelik",
     agirlik: "12000 kg",
-    test: "Kalite kontrol: Geçti",
-    operator: "Operatör: #124"
+    test: "Geçti",
+    operator: "#124"
   },
   "TR003": {
     model: "Tenteli",
     sasi: "Standart",
     malzeme: "Çelik",
     agirlik: "9500 kg",
-    test: "Kalite kontrol: Geçti",
-    operator: "Operatör: #124"
+    test: "Geçti",
+    operator: "#124"
   }
 };
 
@@ -51,9 +49,8 @@ if (vehicles[id]) {
     "<b>Şasi:</b> " + vehicles[id].sasi + "<br>" +
     "<b>Malzeme:</b> " + vehicles[id].malzeme + "<br>" +
     "<b>Ağırlık:</b> " + vehicles[id].agirlik;
-    "<b>" + vehicles[id].test + "</b><br>" +
-    "<b>" + vehicles[id].operator + "</b>" +
-    "<b>" + vehicles[id].tasarimci + "</b>" 
+    "<b>Kalite:</b> " + vehicles[id].test + "<br>" +
+    "<b>Operatör:</b> " + vehicles[id].operator
 } else {
   document.getElementById("info").innerHTML = "Araç bulunamadı!";
 }
