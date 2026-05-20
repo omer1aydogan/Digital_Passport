@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aydoğan Treyler Dijital Pasaport</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+}
+
+/* HEADER */
+.header {
+  background-color: #002b5c;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+}
+
+/* LOGO */
+.logo {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* CARD */
+.card {
+  background-color: white;
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+.title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #002b5c;
+}
+
+/* INFO */
+.info {
+  font-size: 16px;
+  line-height: 2;
+}
+
+/* ICON */
+.icon {
+  margin-right: 8px;
+}
+
+/* QR */
+.qr {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  Aydoğan Treyler Dijital Araç Pasaportu
+</div>
+
+<div class="logo">
+  <!-- Basit SVG logo -->
+  <svg width="120" height="60">
+    <rect width="120" height="60" rx="10" ry="10" fill="#002b5c"/>
+    <text x="60" y="35" font-size="16" text-anchor="middle" fill="white" font-family="Arial">
+      AYDOĞAN
+    </text>
+  </svg>
+</div>
+
+<div class="card">
+
+  <div class="title">Araç Bilgileri</div>
+
+  <div id="info">Yükleniyor...</div>
+
+  <div class="qr">
+    <p>QR ile tekrar erişim</p>
+    <img id="qrImg" width="120">
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 | Tasarımcı: Ömer Faruk AYDOĞAN
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const vehicles = {
+  "TR001": {
+    model: "Tanker",
+    sasi: "Silo Şasi",
+    malzeme: "Alüminyum",
+    agirlik: "8200 kg",
+    uretim: "2025",
+    kalite: "Geçti",
+    operator: "#124"
+  },
+  "TR002": {
+    model: "Lowbed",
+    sasi: "Ağır Yük Şasi",
+    malzeme: "Çelik",
+    agirlik: "12000 kg",
+    uretim: "2025",
+    kalite: "Geçti",
+    operator: "#098"
+  }
+};
+
+if (vehicles[id]) {
+  document.getElementById("info").innerHTML =
+    "<div class='info'>" +
+    "🚛 <b>Araç ID:</b> " + id + "<br>" +
+    "📦 <b>Model:</b> " + vehicles[id].model + "<br>" +
+    "🧱 <b>Şasi:</b> " + vehicles[id].sasi + "<br>" +
+    "🔩 <b>Malzeme:</b> " + vehicles[id].malzeme + "<br>" +
+    "⚖️ <b>Ağırlık:</b> " + vehicles[id].agirlik + "<br>" +
+    "📅 <b>Üretim Yılı:</b> " + vehicles[id].uretim + "<br>" +
+    "✅ <b>Kalite:</b> " + vehicles[id].kalite + "<br>" +
+    "👷 <b>Operatör:</b> " + vehicles[id].operator +
+    "</div>";
+
+  // QR AUTO GENERATION
+  const currentURL = window.location.href;
+  document.getElementById("qrImg").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + currentURL;
+
+} else {
+  document.getElementById("info").innerHTML = "Araç bulunamadı!";
+}
+</script>
+
+</body>
+</html>
+``
