@@ -1,16 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Tırsan Dijital Pasaport</title>
-</head>
-
-<body>
-
-<h1>Tırsan Dijital Araç Pasaportu</h1>
-
-<p id="info">Yükleniyor...</p>
-
 <script>
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -20,9 +7,9 @@ const vehicles = {
     model: "Tanker",
     sasi: "Silo",
     malzeme: "Alüminyum",
-    agirlik: "8200 kg",   
+    agirlik: "8200 kg",
     test: "Geçti",
-    operator: "#124"  
+    operator: "#124"
   },
   "TR002": {
     model: "Lowbed",
@@ -30,15 +17,7 @@ const vehicles = {
     malzeme: "Çelik",
     agirlik: "12000 kg",
     test: "Geçti",
-    operator: "#124"
-  },
-  "TR003": {
-    model: "Tenteli",
-    sasi: "Standart",
-    malzeme: "Çelik",
-    agirlik: "9500 kg",
-    test: "Geçti",
-    operator: "#124"
+    operator: "#98"
   }
 };
 
@@ -48,13 +27,10 @@ if (vehicles[id]) {
     "<b>Model:</b> " + vehicles[id].model + "<br>" +
     "<b>Şasi:</b> " + vehicles[id].sasi + "<br>" +
     "<b>Malzeme:</b> " + vehicles[id].malzeme + "<br>" +
-    "<b>Ağırlık:</b> " + vehicles[id].agirlik;
+    "<b>Ağırlık:</b> " + vehicles[id].agirlik + "<br>" +
     "<b>Kalite:</b> " + vehicles[id].test + "<br>" +
-    "<b>Operatör:</b> " + vehicles[id].operator
+    "<b>Operatör:</b> " + vehicles[id].operator;
 } else {
   document.getElementById("info").innerHTML = "Araç bulunamadı!";
 }
 </script>
-
-</body>
-</html>
