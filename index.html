@@ -23,7 +23,7 @@ const vehicles = {
     agirlik: "8200 kg",
     test: "Geçti",
     operator: "#124",
-    tasarımcı: "Omer Faruk AYDOGAN"
+    tasarimci: "Omer Faruk AYDOGAN"
   },
   "TR002": {
     model: "Lowbed",
@@ -51,7 +51,8 @@ if (vehicles[id]) {
     "<b>Malzeme:</b> " + vehicles[id].malzeme + "<br>" +
     "<b>Ağırlık:</b> " + vehicles[id].agirlik + "<br>" +
     "<b>Kalite:</b> " + vehicles[id].test + "<br>" +
-    "<b>Operatör:</b> " + vehicles[id].operator;
+    "<b>Operatör:</b> " + vehicles[id].operator+
+    "<b>tasarimci:</b> " + vehicles[id].tasarimci;
 } else {
   document.getElementById("info").innerHTML = "Araç bulunamadı!";
 }
