@@ -2,64 +2,157 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Tırsan Dijital Pasaport</title>
+<title>Aydoğan Treyler Dijital Pasaport</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f4f6f9;
+  margin: 0;
+}
+
+/* LOGIN */
+.login {
+  text-align: center;
+  margin-top: 80px;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+}
+
+/* HEADER */
+.header {
+  background: #002b5c;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  display: none;
+}
+
+/* CARD */
+.card {
+  background: white;
+  max-width: 520px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: none;
+  animation: fadeIn 1s;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+/* INFO */
+.info {
+  line-height: 2;
+}
+
+/* QR */
+.qr {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+  display: none;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>Tırsan Dijital Araç Pasaportu</h1>
+<!-- LOGIN -->
+<div class="login" id="loginDiv">
+  <h2>Aydoğan Treyler Giriş</h2>
+  <input id="user" placeholder="Kullanıcı adı"><br>
+  <input id="pass" type="password" placeholder="Şifre"><br>
+  <button onclick="login()">Giriş</button>
+</div>
 
-<p id="info">Yükleniyor...</p>
+<!-- HEADER -->
+<div class="header" id="header">
+  Aydoğan Treyler Dijital Araç Pasaportu
+</div>
+
+<!-- CARD -->
+<div class="card" id="card">
+  <h3>Araç Bilgileri</h3>
+  <div id="info">Yükleniyor...</div>
+
+  <div class="qr">
+    <img id="qrImg" width="120">
+  </div>
+
+  <button onclick="window.print()">PDF İndir</button>
+</div>
+
+<!-- FOOTER -->
+<div class="footer" id="footer">
+  © 2026 | Tasarımcı: Ömer Faruk AYDOĞAN
+</div>
 
 <script>
+// LOGIN
+function login() {
+  const u = document.getElementById("user").value;
+  const p = document.getElementById("pass").value;
+
+  if(u === "admin" && p === "1234") {
+    document.getElementById("loginDiv").style.display="none";
+    document.getElementById("header").style.display="block";
+    document.getElementById("card").style.display="block";
+    document.getElementById("footer").style.display="block";
+    loadData();
+  } else {
+    alert("Hatalı giriş");
+  }
+}
+
+// DATA
+function loadData(){
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 const vehicles = {
-  "TR001": {
-    model: "Tanker",
-    sasi: "Silo",
-    malzeme: "Alüminyum",
-    agirlik: "8200 kg",
-    test: "Geçti",
-    operator: "#124",
-    tasarimci: "Ömer Faruk AYDOĞAN"
-  },
-  "TR002": {
-    model: "Lowbed",
-    sasi: "Çelik",
-    malzeme: "Çelik",
-    agirlik: "12000 kg",
-    test: "Geçti",
-    operator: "#98",
-    tasarimci: "Ömer Faruk AYDOĞAN"
-  },
-  "TR003": {
-    model: "Tenteli",
-    sasi: "Standart",
-    malzeme: "Çelik",
-    agirlik: "9500 kg",
-    test: "Geçti",
-    operator: "#77",
-    tasarimci: "Ömer Faruk AYDOĞAN"
+  "TR001":{
+    model:"Tanker",
+    sasi:"Silo",
+    malzeme:"Alüminyum",
+    agirlik:"8200 kg",
+    yil:"2025",
+    kalite:"Geçti",
+    operator:"#124"
   }
 };
 
-if (vehicles[id]) {
-  document.getElementById("info").innerHTML =
-    "<b>Araç ID:</b> " + id + "<br>" +
-    "<b>Model:</b> " + vehicles[id].model + "<br>" +
-    "<b>Şasi:</b> " + vehicles[id].sasi + "<br>" +
-    "<b>Malzeme:</b> " + vehicles[id].malzeme + "<br>" +
-    "<b>Ağırlık:</b> " + vehicles[id].agirlik + "<br>" +
-    "<b>Kalite:</b> " + vehicles[id].test + "<br>" +
-    "<b>Operatör:</b> " + vehicles[id].operator + "<br>" + 
-    "<b>Tasarımcı:</b> " + vehicles[id].tasarimci;
-} else {
-  document.getElementById("info").innerHTML = "Araç bulunamadı!";
+if(vehicles[id]){
+document.getElementById("info").innerHTML =
+"🚛 ID: "+id+"<br>"+
+"📦 Model: "+vehicles[id].model+"<br>"+
+"🧱 Şasi: "+vehicles[id].sasi+"<br>"+
+"🔩 Malzeme: "+vehicles[id].malzeme+"<br>"+
+"⚖️ Ağırlık: "+vehicles[id].agirlik+"<br>"+
+"📅 Yıl: "+vehicles[id].yil+"<br>"+
+"✅ Kalite: "+vehicles[id].kalite+"<br>"+
+"👷 Operatör: "+vehicles[id].operator;
+
+document.getElementById("qrImg").src=
+"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+window.location.href;
+}
 }
 </script>
 
 </body>
 </html>
-``
