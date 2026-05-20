@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tırsan Dijital Pasaport</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.card {
+  background-color: white;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.info {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.label {
+  font-weight: bold;
+  color: #555;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #777;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+  Tırsan Dijital Araç Pasaportu
+</div>
+
+<div class="card">
+  <div class="title">Araç Bilgileri</div>
+  <div id="info">Yükleniyor...</div>
+</div>
+
+<div class="footer">
+  © 2026 | Tasarımcı: Ömer Faruk AYDOĞAN
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const vehicles = {
+  "TR001": {
+    model: "Tanker",
+    sasi: "Silo Şasi",
+    malzeme: "Alüminyum",
+    agirlik: "8200 kg",
+    uretim: "2025",
+    kalite: "Geçti",
+    operator: "#124"
+  },
+  "TR002": {
+    model: "Lowbed",
+    sasi: "Ağır Yük Şasi",
+    malzeme: "Çelik",
+    agirlik: "12000 kg",
+    uretim: "2025",
+    kalite: "Geçti",
+    operator: "#098"
+  },
+  "TR003": {
+    model: "Tenteli",
+    sasi: "Standart Şasi",
+    malzeme: "Çelik",
+    agirlik: "9500 kg",
+    uretim: "2025",
+    kalite: "Geçti",
+    operator: "#077"
+  }
+};
+
+if (vehicles[id]) {
+  document.getElementById("info").innerHTML =
+    "<div class='info'>" +
+    "<span class='label'>Araç ID:</span> " + id + "<br>" +
+    "<span class='label'>Model:</span> " + vehicles[id].model + "<br>" +
+    "<span class='label'>Şasi:</span> " + vehicles[id].sasi + "<br>" +
+    "<span class='label'>Malzeme:</span> " + vehicles[id].malzeme + "<br>" +
+    "<span class='label'>Ağırlık:</span> " + vehicles[id].agirlik + "<br>" +
+    "<span class='label'>Üretim Yılı:</span> " + vehicles[id].uretim + "<br>" +
+    "<span class='label'>Kalite Durumu:</span> " + vehicles[id].kalite + "<br>" +
+    "<span class='label'>Operatör:</span> " + vehicles[id].operator +
+    "</div>";
+} else {
+  document.getElementById("info").innerHTML = "Araç bulunamadı!";
+}
+</script>
+
+</body>
+</html>
+``
