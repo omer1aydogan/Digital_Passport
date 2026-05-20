@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tırsan Dijital Pasaport</title>
+</head>
+
+<body>
+
+<h1>Tırsan Dijital Araç Pasaportu</h1>
+
+<p id="info">Yükleniyor...</p>
+
 <script>
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -18,6 +31,14 @@ const vehicles = {
     agirlik: "12000 kg",
     test: "Geçti",
     operator: "#98"
+  },
+  "TR003": {
+    model: "Tenteli",
+    sasi: "Standart",
+    malzeme: "Çelik",
+    agirlik: "9500 kg",
+    test: "Geçti",
+    operator: "#77"
   }
 };
 
@@ -34,3 +55,7 @@ if (vehicles[id]) {
   document.getElementById("info").innerHTML = "Araç bulunamadı!";
 }
 </script>
+
+</body>
+</html>
+``
