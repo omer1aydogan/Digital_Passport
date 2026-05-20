@@ -92,7 +92,7 @@ input {
   <div id="info">Yükleniyor...</div>
 
   <div class="qr">
-    <img id="qrImg" width="120">
+    <img id="qrImg" width="150">
   </div>
 
   <button onclick="window.print()">PDF İndir</button>
@@ -100,7 +100,7 @@ input {
 
 <!-- FOOTER -->
 <div class="footer" id="footer">
-  © 2026 | Tasarımcı: Ömer Faruk AYDOĞAN
+  © 2026 | Designed by Omer Faruk AYDOGAN
 </div>
 
 <script>
@@ -133,7 +133,28 @@ const vehicles = {
     agirlik:"8200 kg",
     yil:"2025",
     kalite:"Geçti",
-    operator:"#124"
+    operator:"#124",
+    qr:"TR001.png"
+  },
+  "TR002":{
+    model:"Lowbed",
+    sasi:"Ağır Yük",
+    malzeme:"Çelik",
+    agirlik:"12000 kg",
+    yil:"2025",
+    kalite:"Geçti",
+    operator:"#098",
+    qr:"TR002.png"
+  },
+  "TR003":{
+    model:"Tenteli",
+    sasi:"Standart",
+    malzeme:"Çelik",
+    agirlik:"9500 kg",
+    yil:"2025",
+    kalite:"Geçti",
+    operator:"#077",
+    qr:"TR003.png"
   }
 };
 
@@ -148,8 +169,7 @@ document.getElementById("info").innerHTML =
 "✅ Kalite: "+vehicles[id].kalite+"<br>"+
 "👷 Operatör: "+vehicles[id].operator;
 
-document.getElementById("qrImg").src=
-"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+window.location.href;
+document.getElementById("qrImg").src = vehicles[id].qr;
 }
 }
 </script>
